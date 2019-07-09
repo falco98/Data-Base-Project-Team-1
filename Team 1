@@ -100,3 +100,29 @@ INNER JOIN  WeedCatalog ON PartnerCatalog.ItemSKU= WeedCatalog.StrainInfo
 WHERE   PartnerCatalog=”Whatever parameter you need”;
 
  /*Since there will be multiple partners with different selections at their discretion*/
+ 
+ 
+ 
+ /* *** Are higher THC products more popular among our customers *** */
+ SELECT ProductID, StrainName, THC% FROM Sales 
+ GROUP BY TotalSales AND THC% DESC;
+
+ 
+ /* *** Does store location have an impact on sales volume *** */
+ SELECT StoreNumber, TotalSales, StoreRegion
+ FROM Sales 
+ COUNT(TotalSales)
+ GROUP BY StoreRegion
+
+ 
+ /* *** What day of the week do our clients’ maximize profits *** */
+ SELECT MAX(WeeklyRevenue)
+ FROM Sales
+ WHERE WeekDay = ‘Monday’ , ‘Tuesday’ etc.
+ 
+ 
+ /* *** Which employee is responsible for bringing on more clients *** */
+ SELECT MAX(AnnualClients)
+ FROM Sales
+ ORDER BY EmployeeID
+ 
